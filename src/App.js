@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 function App() {
+  const [items, setItems] = useState([]);
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setItems([...items, input]);
+    setInput("");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Enter a Todo</Form.Label>
+          <Form.Control type="text" placeholder="Enter a Todo" value={input} onChange = {(e) => setInput(e.target.value)} />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Add
+        </Button>
+      </form>
+
+      <ListGroup>
+        {items.map((item)=>(
+          <ListGroupItem key={item}>{item}</ListGroupItem>
+        ))}
+      </ListGroup>
+    </>
   );
 }
 
