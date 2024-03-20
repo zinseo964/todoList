@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.horizontal-div {
+  width: 30%; /* 각 div의 너비를 조정할 수 있습니다 */
+  padding: 20px;
+  border: 1px solid #ccc;
+}
