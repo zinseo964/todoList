@@ -32,11 +32,11 @@ function TodoList() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="할일을 입력하세요"
+          placeholder="To DO "
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button type="submit">추가</button>
+        <button type="submit">ADD</button>
       </form>
       <ul>
         {todos.map(todo => (
